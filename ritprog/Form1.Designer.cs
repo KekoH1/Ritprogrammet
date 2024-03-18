@@ -38,7 +38,6 @@ namespace ritprog
             btn_tri = new Button();
             btn_rect = new Button();
             button5 = new Button();
-            button4 = new Button();
             button3 = new Button();
             button2 = new Button();
             button1 = new Button();
@@ -87,7 +86,6 @@ namespace ritprog
             panel3.Name = "panel3";
             panel3.Size = new Size(800, 97);
             panel3.TabIndex = 6;
-           
             // 
             // picked_color
             // 
@@ -128,7 +126,6 @@ namespace ritprog
             panel4.Controls.Add(btn_tri);
             panel4.Controls.Add(btn_rect);
             panel4.Controls.Add(button5);
-            panel4.Controls.Add(button4);
             panel4.Controls.Add(button3);
             panel4.Controls.Add(button2);
             panel4.Controls.Add(button1);
@@ -141,9 +138,9 @@ namespace ritprog
             // 
             btn_tri.FlatAppearance.MouseDownBackColor = Color.Silver;
             btn_tri.FlatAppearance.MouseOverBackColor = Color.Silver;
-            btn_tri.Location = new Point(572, 19);
+            btn_tri.Location = new Point(546, 19);
             btn_tri.Name = "btn_tri";
-            btn_tri.Size = new Size(61, 44);
+            btn_tri.Size = new Size(69, 44);
             btn_tri.TabIndex = 7;
             btn_tri.Text = "Line";
             btn_tri.UseVisualStyleBackColor = true;
@@ -153,7 +150,7 @@ namespace ritprog
             // 
             btn_rect.FlatAppearance.MouseDownBackColor = Color.Silver;
             btn_rect.FlatAppearance.MouseOverBackColor = Color.Silver;
-            btn_rect.Location = new Point(461, 19);
+            btn_rect.Location = new Point(416, 19);
             btn_rect.Name = "btn_rect";
             btn_rect.Size = new Size(90, 44);
             btn_rect.TabIndex = 6;
@@ -173,22 +170,11 @@ namespace ritprog
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
             // 
-            // button4
-            // 
-            button4.FlatAppearance.MouseDownBackColor = Color.Silver;
-            button4.FlatAppearance.MouseOverBackColor = Color.Silver;
-            button4.Location = new Point(105, 19);
-            button4.Name = "button4";
-            button4.Size = new Size(68, 44);
-            button4.TabIndex = 2;
-            button4.Text = "Fill";
-            button4.UseVisualStyleBackColor = true;
-            // 
             // button3
             // 
             button3.FlatAppearance.MouseDownBackColor = Color.Silver;
             button3.FlatAppearance.MouseOverBackColor = Color.Silver;
-            button3.Location = new Point(199, 19);
+            button3.Location = new Point(117, 20);
             button3.Name = "button3";
             button3.Size = new Size(70, 44);
             button3.TabIndex = 3;
@@ -200,7 +186,7 @@ namespace ritprog
             // 
             button2.FlatAppearance.MouseDownBackColor = Color.Silver;
             button2.FlatAppearance.MouseOverBackColor = Color.Silver;
-            button2.Location = new Point(284, 19);
+            button2.Location = new Point(208, 19);
             button2.Name = "button2";
             button2.Size = new Size(72, 44);
             button2.TabIndex = 4;
@@ -212,7 +198,7 @@ namespace ritprog
             // 
             button1.FlatAppearance.MouseDownBackColor = Color.Silver;
             button1.FlatAppearance.MouseOverBackColor = Color.Silver;
-            button1.Location = new Point(373, 19);
+            button1.Location = new Point(310, 19);
             button1.Name = "button1";
             button1.Size = new Size(73, 44);
             button1.TabIndex = 5;
@@ -365,7 +351,6 @@ namespace ritprog
         private Button button1;
         private Button button2;
         private Button button3;
-        private Button button4;
         private Button button5;
         private Button picked_color;
         private Button btn_ellipse;
