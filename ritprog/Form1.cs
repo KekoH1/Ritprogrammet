@@ -1,4 +1,6 @@
+using System.Drawing;
 using System.Drawing.Imaging;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Channels;
 
@@ -52,8 +54,9 @@ namespace ritprog
         Graphics g;
         bool paint = false;
         Point px, py;
-        Pen p = new Pen(Color.Black, 1);
+        Pen p = new Pen(Color.Black, 3);
         Pen erase = new Pen(Color.White, 10);
+
         int index;
         int x, y, sX, sY, cX, cY;
 
@@ -112,8 +115,14 @@ namespace ritprog
                 g.DrawRectangle(p, cX, cY, sX, sY);
             }
 
-
-
+            if (index == 5)
+            {
+                Point[] points = new Point[3];
+                points[0] = new Point(cX, cY + sY);
+                points[1] = new Point(cX + sX, cY + sY);
+                points[2] = new Point(cX + (sX / 2), cY);
+                g.DrawPolygon(p, points);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -137,6 +146,11 @@ namespace ritprog
             index = 4;
         }
 
+        private void btn_tri_Click(object sender, EventArgs e)
+        {
+            index = 5;
+        }
+
 
 
         private void pic_Paint(object sender, PaintEventArgs e)
@@ -153,6 +167,14 @@ namespace ritprog
                 if (index == 4)
                 {
                     g.DrawRectangle(p, cX, cY, sX, sY);
+                }
+                if (index == 5)
+                {
+                    Point[] points = new Point[3];
+                    points[0] = new Point(cX, cY + sY);
+                    points[1] = new Point(cX + sX, cY + sY);
+                    points[2] = new Point(cX + (sX / 2), cY);
+                    g.DrawPolygon(p, points);
                 }
 
             }
@@ -183,25 +205,86 @@ namespace ritprog
                 btm.Save(sfd.FileName, ImageFormat.Jpeg);
                 MessageBox.Show("Image saved successfully");
             }
+
+
         }
 
 
-
-
-
+        private Stack<Bitmap> undoStack = new Stack<Bitmap>();
+        private Stack<Bitmap> redoStack = new Stack<Bitmap>();
 
         private void btn_undo_Click(object sender, EventArgs e)
         {
+            SwitchElements(undoStack, redoStack);
+        }
+        private void btn_redo_Click(object sender, EventArgs e)
+        {
+            SwitchElements(redoStack, undoStack);
+        }
 
+
+        private void SwitchElements(Stack<Bitmap> undoStack, Stack<Bitmap> redoStack)
+        {
+            if (undoStack.Any())
+            {
+                redoStack.Push(new Bitmap(bm));
+                bm = undoStack.Pop();
+                g = Graphics.FromImage(bm);
+                pic.Image = bm;
+            }
         }
 
 
 
 
 
+        private void btn_size_Click(object sender, EventArgs e)
+        {
+
+            p.Width = +10;
+        }
+
+        private void btn_sizep_Click(object sender, EventArgs e)
+        {
+            p.Width = -10;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            p.Width = 3;
+        }
+
+       
+        private void btn_upload_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image Files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    bm = new Bitmap(ofd.FileName);
+                    g = Graphics.FromImage(bm);
+                    pic.Image = bm;
+                    g.Clear(Color.White);
+                    index = 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading file: " + ex.Message);
+                }
+            }
+        }
     }
 }
             
+
+
+
+
+
+
+
         
     
 

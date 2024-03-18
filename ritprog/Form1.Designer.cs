@@ -50,6 +50,11 @@ namespace ritprog
             btn_undo = new Button();
             pic = new PictureBox();
             panel5 = new Panel();
+            btn_upload = new Button();
+            btn_redo = new Button();
+            button4 = new Button();
+            btn_sizep = new Button();
+            btn_size = new Button();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
@@ -70,7 +75,7 @@ namespace ritprog
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 109);
+            panel1.Size = new Size(800, 88);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
@@ -90,7 +95,8 @@ namespace ritprog
             // picked_color
             // 
             picked_color.BackColor = Color.White;
-            picked_color.Location = new Point(9, 31);
+            picked_color.Cursor = Cursors.Hand;
+            picked_color.Location = new Point(9, 27);
             picked_color.Name = "picked_color";
             picked_color.Size = new Size(45, 44);
             picked_color.TabIndex = 0;
@@ -98,6 +104,7 @@ namespace ritprog
             // 
             // btn_save
             // 
+            btn_save.Cursor = Cursors.Hand;
             btn_save.FlatAppearance.MouseDownBackColor = Color.Silver;
             btn_save.FlatAppearance.MouseOverBackColor = Color.Silver;
             btn_save.Location = new Point(713, 12);
@@ -110,6 +117,7 @@ namespace ritprog
             // 
             // btn_clear
             // 
+            btn_clear.Cursor = Cursors.Hand;
             btn_clear.FlatAppearance.MouseDownBackColor = Color.Silver;
             btn_clear.FlatAppearance.MouseOverBackColor = Color.Silver;
             btn_clear.Location = new Point(713, 51);
@@ -129,25 +137,27 @@ namespace ritprog
             panel4.Controls.Add(button3);
             panel4.Controls.Add(button2);
             panel4.Controls.Add(button1);
-            panel4.Location = new Point(63, 12);
+            panel4.Location = new Point(66, 12);
             panel4.Name = "panel4";
-            panel4.Size = new Size(644, 82);
+            panel4.Size = new Size(641, 71);
             panel4.TabIndex = 8;
             // 
             // btn_tri
             // 
+            btn_tri.Cursor = Cursors.Hand;
             btn_tri.FlatAppearance.MouseDownBackColor = Color.Silver;
             btn_tri.FlatAppearance.MouseOverBackColor = Color.Silver;
             btn_tri.Location = new Point(546, 19);
             btn_tri.Name = "btn_tri";
             btn_tri.Size = new Size(69, 44);
             btn_tri.TabIndex = 7;
-            btn_tri.Text = "Line";
+            btn_tri.Text = "Triangle";
             btn_tri.UseVisualStyleBackColor = true;
             btn_tri.Click += btn_tri_Click;
             // 
             // btn_rect
             // 
+            btn_rect.Cursor = Cursors.Hand;
             btn_rect.FlatAppearance.MouseDownBackColor = Color.Silver;
             btn_rect.FlatAppearance.MouseOverBackColor = Color.Silver;
             btn_rect.Location = new Point(416, 19);
@@ -160,6 +170,7 @@ namespace ritprog
             // 
             // button5
             // 
+            button5.Cursor = Cursors.Hand;
             button5.FlatAppearance.MouseDownBackColor = Color.Silver;
             button5.FlatAppearance.MouseOverBackColor = Color.Silver;
             button5.Location = new Point(18, 19);
@@ -172,6 +183,7 @@ namespace ritprog
             // 
             // button3
             // 
+            button3.Cursor = Cursors.Hand;
             button3.FlatAppearance.MouseDownBackColor = Color.Silver;
             button3.FlatAppearance.MouseOverBackColor = Color.Silver;
             button3.Location = new Point(117, 20);
@@ -184,6 +196,7 @@ namespace ritprog
             // 
             // button2
             // 
+            button2.Cursor = Cursors.Hand;
             button2.FlatAppearance.MouseDownBackColor = Color.Silver;
             button2.FlatAppearance.MouseOverBackColor = Color.Silver;
             button2.Location = new Point(208, 19);
@@ -196,6 +209,7 @@ namespace ritprog
             // 
             // button1
             // 
+            button1.Cursor = Cursors.Hand;
             button1.FlatAppearance.MouseDownBackColor = Color.Silver;
             button1.FlatAppearance.MouseOverBackColor = Color.Silver;
             button1.Location = new Point(310, 19);
@@ -275,23 +289,23 @@ namespace ritprog
             // 
             // btn_undo
             // 
+            btn_undo.Cursor = Cursors.Hand;
             btn_undo.FlatAppearance.MouseDownBackColor = Color.Silver;
             btn_undo.FlatAppearance.MouseOverBackColor = Color.Silver;
-            btn_undo.Location = new Point(9, 19);
+            btn_undo.Location = new Point(9, 6);
             btn_undo.Name = "btn_undo";
             btn_undo.Size = new Size(45, 32);
             btn_undo.TabIndex = 10;
             btn_undo.Text = "Undo";
             btn_undo.UseVisualStyleBackColor = true;
-            btn_undo.Click += btn_undo_Click;
             // 
             // pic
             // 
             pic.BackColor = Color.White;
             pic.Dock = DockStyle.Fill;
-            pic.Location = new Point(0, 109);
+            pic.Location = new Point(0, 88);
             pic.Name = "pic";
-            pic.Size = new Size(800, 341);
+            pic.Size = new Size(800, 415);
             pic.TabIndex = 0;
             pic.TabStop = false;
             pic.Click += pictureBox1_Click;
@@ -303,18 +317,87 @@ namespace ritprog
             // panel5
             // 
             panel5.BackColor = SystemColors.AppWorkspace;
+            panel5.Controls.Add(btn_upload);
+            panel5.Controls.Add(btn_redo);
+            panel5.Controls.Add(button4);
+            panel5.Controls.Add(btn_sizep);
+            panel5.Controls.Add(btn_size);
             panel5.Controls.Add(btn_undo);
             panel5.Dock = DockStyle.Left;
-            panel5.Location = new Point(0, 109);
+            panel5.Location = new Point(0, 88);
             panel5.Name = "panel5";
-            panel5.Size = new Size(66, 341);
+            panel5.Size = new Size(66, 415);
             panel5.TabIndex = 2;
+            // 
+            // btn_upload
+            // 
+            btn_upload.Cursor = Cursors.Hand;
+            btn_upload.FlatAppearance.MouseDownBackColor = Color.Silver;
+            btn_upload.FlatAppearance.MouseOverBackColor = Color.Silver;
+            btn_upload.Location = new Point(1, 371);
+            btn_upload.Name = "btn_upload";
+            btn_upload.Size = new Size(62, 32);
+            btn_upload.TabIndex = 16;
+            btn_upload.Text = "Load File";
+            btn_upload.UseVisualStyleBackColor = true;
+            btn_upload.Click += btn_upload_Click;
+            // 
+            // btn_redo
+            // 
+            btn_redo.Cursor = Cursors.Hand;
+            btn_redo.FlatAppearance.MouseDownBackColor = Color.Silver;
+            btn_redo.FlatAppearance.MouseOverBackColor = Color.Silver;
+            btn_redo.Location = new Point(9, 44);
+            btn_redo.Name = "btn_redo";
+            btn_redo.Size = new Size(45, 32);
+            btn_redo.TabIndex = 14;
+            btn_redo.Text = "Redo";
+            btn_redo.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Cursor = Cursors.Hand;
+            button4.FlatAppearance.MouseDownBackColor = Color.Silver;
+            button4.FlatAppearance.MouseOverBackColor = Color.Silver;
+            button4.Location = new Point(3, 122);
+            button4.Name = "button4";
+            button4.Size = new Size(60, 32);
+            button4.TabIndex = 13;
+            button4.Text = "Normal";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
+            // btn_sizep
+            // 
+            btn_sizep.Cursor = Cursors.Hand;
+            btn_sizep.FlatAppearance.MouseDownBackColor = Color.Silver;
+            btn_sizep.FlatAppearance.MouseOverBackColor = Color.Silver;
+            btn_sizep.Location = new Point(3, 160);
+            btn_sizep.Name = "btn_sizep";
+            btn_sizep.Size = new Size(60, 32);
+            btn_sizep.TabIndex = 12;
+            btn_sizep.Text = "Small";
+            btn_sizep.UseVisualStyleBackColor = true;
+            btn_sizep.Click += btn_sizep_Click;
+            // 
+            // btn_size
+            // 
+            btn_size.Cursor = Cursors.Hand;
+            btn_size.FlatAppearance.MouseDownBackColor = Color.Silver;
+            btn_size.FlatAppearance.MouseOverBackColor = Color.Silver;
+            btn_size.Location = new Point(3, 84);
+            btn_size.Name = "btn_size";
+            btn_size.Size = new Size(60, 32);
+            btn_size.TabIndex = 11;
+            btn_size.Text = "Large";
+            btn_size.UseVisualStyleBackColor = true;
+            btn_size.Click += btn_size_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 503);
             Controls.Add(panel5);
             Controls.Add(pic);
             Controls.Add(panel1);
@@ -331,10 +414,7 @@ namespace ritprog
             ResumeLayout(false);
         }
 
-        private void btn_tri_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+
 
         #endregion
 
@@ -359,5 +439,10 @@ namespace ritprog
         private Button btn_clear;
         private Button btn_undo;
         private Panel panel5;
+        private Button btn_size;
+        private Button btn_sizep;
+        private Button button4;
+        private Button btn_redo;
+        private Button btn_upload;
     }
 }
